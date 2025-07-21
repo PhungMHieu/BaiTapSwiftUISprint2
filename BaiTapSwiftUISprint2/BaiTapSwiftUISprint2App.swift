@@ -11,7 +11,10 @@ import SwiftUI
 struct BaiTapSwiftUISprint2App: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+//            ContentView()
+//            Page1V()
+            LazyV()
+//            HealthGridItemV(title: "Heart rate")
         }
     }
 }

@@ -8,8 +8,19 @@
 import SwiftUI
 
 struct OnBoardTabView: View {
+    @State var selection: Int = 1
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        TabView(selection: $selection) {
+            Page1V().tag(1)
+            LazyV().tag(2)
+        }
+        .tabViewStyle(PageTabViewStyle(indexDisplayMode: .never))
+        Button {
+            selection = (selection+1)%3
+        } label: {
+            Text("Next")
+        }
+
     }
 }
 

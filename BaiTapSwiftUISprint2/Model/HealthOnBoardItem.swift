@@ -6,3 +6,9 @@
 //
 
 import Foundation
+
+
+struct healGrid{
+    var icon:ImageResource
+    var title:String
+}
