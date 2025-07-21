@@ -16,7 +16,7 @@ struct LazyV: View {
             healGrid(icon: .energyConsumption, title: "Low Energy Levels")
         ]
         let columns = [
-            GridItem(.flexible()),
+            GridItem(.flexible(), spacing: 16),
             GridItem(.flexible()),
 //            GridItem(.adaptive(minimum: 80))
         ]
@@ -30,13 +30,9 @@ struct LazyV: View {
                 }
 //                .padding(0)
             }
-//            .frame(maxHeight: 606)
-//            .frame(maxWidth: .infinity, alignment: .leading)
-            .background(.backgroundApp2)
-//            .padding(.horizontal, 16)
-//            .padding()
+//            .background(.backgroundApp2)
         }
-//        .padding(.horizontal,16)
+        .padding(.horizontal,16)
         .background(.backgroundApp2)
         
     }

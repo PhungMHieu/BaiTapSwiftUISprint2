@@ -33,8 +33,8 @@ struct HealthGridItemV2: View {
             }
             .background(.neutral5)
             .frame(width: (UIScreen.main.bounds.width-48)/2,height: 195)
-            .aspectRatio(CGSize(width:164, height:195), contentMode: .fit)
             .cornerRadius(20)
+            .aspectRatio(CGSize(width:164, height:195), contentMode: .fit)
 //        }
 //        .frame(maxWidth: .infinity, maxHeight: .infinity)
 //        .background(.backgroundApp2)
