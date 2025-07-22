@@ -8,12 +8,13 @@
 import SwiftUI
 
 struct LazyV: View {
+    private var data: [healGrid] = []
     var body: some View {
         let data = [
             healGrid(icon: .pulse, title: "Heart Rate"),
-            healGrid(icon: .hypertension, title: "High Blood Pressure"),
+            healGrid(icon: .hypertension, title: "High Blood\nPressure"),
             healGrid(icon: .stress, title: "Stress & Anxiety"),
-            healGrid(icon: .energyConsumption, title: "Low Energy Levels")
+            healGrid(icon: .energyConsumption, title: "Low Energy\nLevels")
         ]
         let columns = [
             GridItem(.flexible(), spacing: 16),
@@ -24,17 +25,12 @@ struct LazyV: View {
             LazyVGrid(columns: columns, spacing: 16) {
                 ForEach(data, id:\.title) { item in
                     HealthGridItemV2(title: item.title, image: item.icon)
-//                    Spacer()
-//                        .padding()
-//                        .padding(16)
                 }
-//                .padding(0)
             }
-//            .background(.backgroundApp2)
         }
         .padding(.horizontal,16)
         .background(.backgroundApp2)
-        
+//        .ignoresSafeArea(.all)
     }
 }
 

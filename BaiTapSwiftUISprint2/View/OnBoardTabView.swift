@@ -10,17 +10,25 @@ import SwiftUI
 struct OnBoardTabView: View {
     @State var selection: Int = 1
     var body: some View {
-        TabView(selection: $selection) {
-            Page1V().tag(1)
-            LazyV().tag(2)
+        VStack(spacing:0) {
+            TabView(selection: $selection) {
+                Page1V().tag(1)
+                LazyV().tag(2)
+                LazyV().tag(3)
+                LazyV().tag(4)
+            }
+            //        .background()
+            .tabViewStyle(PageTabViewStyle(indexDisplayMode: .never))
+            Button {
+                selection = (selection+1)%5
+            } label: {
+                Text("Continue")
+            }
+            .buttonStyle(ButtonStyleOnBoard())
+            .animation(.smooth, value: 1)
         }
-        .tabViewStyle(PageTabViewStyle(indexDisplayMode: .never))
-        Button {
-            selection = (selection+1)%3
-        } label: {
-            Text("Next")
-        }
-
+        .background(.backgroundApp2)
+//        .padding(16)
     }
 }
 

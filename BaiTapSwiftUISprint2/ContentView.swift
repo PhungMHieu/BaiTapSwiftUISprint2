@@ -7,21 +7,48 @@
 
 import SwiftUI
 
+//struct ContentView: View {
+//    var body: some View {
+//        VStack {
+//            Image(systemName: "globe")
+//                .imageScale(.large)
+//                .foregroundStyle(.tint)
+//            Text("Hello, world!")
+//            Button {
+//                print("Tapped out")
+//            } label: {
+//                Text("Hello world")
+//            }
+//
+//        }
+//        .padding()
+//    }
+//}
+import SwiftUI
+
 struct ContentView: View {
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
-            Button {
-                print("Tapped out")
-            } label: {
-                Text("Hello world")
+        NavigationStack {
+            List {
+                NavigationLink("Đi đến chi tiết", value: "Hello, Detail View!")
+                NavigationLink("Đi đến tao", value: "Hello, world")
             }
-
+            .navigationTitle("Trang chính")
+            .navigationDestination(for: String.self) { value in
+                DetailView(message: value)
+            }
         }
-        .padding()
+    }
+}
+
+struct DetailView: View {
+    let message: String
+
+    var body: some View {
+        Text(message)
+            .font(.largeTitle)
+            .padding()
+            .navigationTitle("Chi tiết")
     }
 }
 

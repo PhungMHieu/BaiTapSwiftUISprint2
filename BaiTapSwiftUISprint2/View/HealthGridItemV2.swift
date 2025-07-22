@@ -14,31 +14,36 @@ struct HealthGridItemV2: View {
         //        Text()
 //        var image: String
 //        ZStack {
+        Button(action: {
+            print("was tapped")
+        }, label: {
             VStack(alignment: .leading,spacing: 0){
                 Image(.monotoneApple)
                     .padding(.top, 16)
                     .padding(.leading, 16)
-//                ZStack(){
-//                    Spacer()
-                    Image(image)
-//                }
-                .frame(maxWidth: .infinity)
-                .padding(.top, 8)
+                //                ZStack(){
+                //                    Spacer()
+                Image(image)
+                //                }
+                    .frame(maxWidth: .infinity)
+                    .padding(.top, 8)
                 Spacer()
                 Text(title)
                     .padding(.leading, 16)
                     .padding(.bottom, 18)
                     .font(.system(size: 18))
+                    .multilineTextAlignment(.leading)
                     .foregroundStyle(.neutral2)
             }
             .background(.neutral5)
             .frame(width: (UIScreen.main.bounds.width-48)/2,height: 195)
             .cornerRadius(20)
             .aspectRatio(CGSize(width:164, height:195), contentMode: .fit)
+        })
+    }
 //        }
 //        .frame(maxWidth: .infinity, maxHeight: .infinity)
 //        .background(.backgroundApp2)
-    }
 }
 
 #Preview {

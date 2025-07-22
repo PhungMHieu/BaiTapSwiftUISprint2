@@ -17,7 +17,7 @@ struct Page1V: View {
                 .foregroundStyle(.neutral1)
                 .padding(.bottom, 8)
                 .padding(.top, 36)
-            Text("Providing workout routines and health information to support well-being.")
+            Text("Providing workout routines and health\n information to support well-being.")
                 .font(.system(size: 16,weight: .medium))
                 .foregroundStyle(.neutral3)
                 .multilineTextAlignment(.center)
@@ -32,27 +32,15 @@ struct Page1V: View {
                 .padding(.leading, 30)
                 .padding(.trailing, 32)
             Spacer()
-            Button {
-//                let font = UIFont.systemFont(ofSize: 16)
-//                print("lineHeight: \(font.lineHeight)")
-//                UIFont.preferredFont(forTextStyle: .body).leading  // returns ~1.712
-//                print("Button was tapped")
-            } label: {
-                Text("Continue")
-                    .font(.system(size: 18))
-                    .fontWeight(.semibold)
-                    .foregroundStyle(.neutral5)
-            }
-            .frame(maxWidth: .infinity)
-            .frame(height: 56)
-            .background(.primaryApp)
-            .cornerRadius(16)
-            .foregroundColor(.accentNormal)
-            .padding(.horizontal)
-//            .foregroundStyle(.primaryApp)
-            .padding(.bottom, 16)
-
-////            Spacer()
+//            Button {
+////                let font = UIFont.systemFont(ofSize: 16)
+////                print("lineHeight: \(font.lineHeight)")
+////                UIFont.preferredFont(forTextStyle: .body).leading  // returns ~1.712
+////                print("Button was tapped")
+//            } label: {
+//                Text("Continue")
+//            }
+//            .buttonStyle(ButtonStyleOnBoard())
         }
         .foregroundStyle(.backlground1)
     }
