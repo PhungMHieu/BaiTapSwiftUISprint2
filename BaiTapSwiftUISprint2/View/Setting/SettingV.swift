@@ -42,12 +42,14 @@ struct SettingV: View {
                     .padding(.vertical,16)
                     ForEach(SectionP.allCases, id: \.self) { ele in
                         VStack(spacing:0){
-                            ForEach(ele.row,id: \.self) { row in
+                            ForEach(ele.row,id: \.self) {row in
                                 SettingItemV(title: row.title,image: row.image)
                                     .overlay(alignment: .bottom) {
-                                        Divider()
-                                            .padding(.leading,52)
-                                            .padding(.trailing,16)
+                                        if(row != ele.row.last){
+                                            Divider()
+                                                .padding(.leading,52)
+                                                .padding(.trailing,16)
+                                        }
                                     }
                             }
                         }
