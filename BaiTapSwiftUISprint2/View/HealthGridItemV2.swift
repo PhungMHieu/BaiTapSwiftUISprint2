@@ -38,8 +38,12 @@ struct HealthGridItemV2: View {
             .background(.neutral5)
             .frame(width: (UIScreen.main.bounds.width-48)/2,height: 195)
             .cornerRadius(20)
+//            .border(RoundedRectangle(cornerRadius: 20, style: .circular), width: 1.5)
+//            .border(RoundedRectangle(cornerRadius: 20), width: 1)
+//            .buttonBorderShape(.roundedRectangle(radius: <#T##CGFloat#>))
             .aspectRatio(CGSize(width:164, height:195), contentMode: .fit)
         })
+//        .stro
     }
 //        }
 //        .frame(maxWidth: .infinity, maxHeight: .infinity)
@@ -47,6 +51,6 @@ struct HealthGridItemV2: View {
 }
 
 #Preview {
-    HealthGridItemV2(title: "Heart rate",image: .pulse)
+    HealthGridItemV2(title: "Heart issue",image: .pulse)
         .background(.neutral3)
 }

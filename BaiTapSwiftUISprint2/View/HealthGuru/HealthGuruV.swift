@@ -10,17 +10,21 @@ import SwiftUI
 struct HealthGuruV: View {
 //    @State private var lstData: [String]
     @StateObject private var measurement = MeasurementManager()
+    @State var pulse: String = ""
+    @State var hrv: String = ""
+//    @State var measurement: Measurement
 //    = ["Pulse 90", "SpO2 95%", "BPM 120", "ECG 120", "Respiratory Rate 20", "Pulse 100", "SpO2 90%", "BPM 110", "ECG 110", "Respiratory Rate 10"]
 ////    = []
     @State private var toggled: Bool = false
     var body: some View {
 //        ZStack {
 //            Rectangle().frame(maxWidth: .infinity,maxHeight: .)
-            VStack (alignment:.leading){
+            VStack (){
                 Text("Health Guru")
                     .font(.system(size: 32))
                     .fontWeight(.semibold)
                     .padding(.leading)
+                    .frame(maxWidth: .infinity,alignment: .leading)
                 Button {
                     toggled.toggle()
                 } label: {
@@ -31,14 +35,16 @@ struct HealthGuruV: View {
                     .frame(maxWidth: .infinity)
                 }
                 .sheet(isPresented: $toggled) {
-                    //                    Text("Hello world")
-                    //                @State
                     HStack {
-                        LabelTextFieldV(text: "Hello", type: .pulse)
-                        LabelTextFieldV(text: "Hello", type: .pulse)
+                        LabelTextFieldV(text: $pulse, type: .pulse)
+                        LabelTextFieldV(text: $hrv, type: .hrv)
                     }
                     Button {
-                        measurement.addMeasurement(.init(pulse: 100, hrv: 100))
+                        guard let p = Int(pulse), let h = Int(hrv) else{
+                            return
+                        }
+                        measurement.addMeasurement(Measurement(pulse: p, hrv: h))
+
                         toggled.toggle()
                     } label: {
                         Text("Add")
@@ -53,6 +59,7 @@ struct HealthGuruV: View {
                                 Text("\(data.pulse)")
                                 Text("\(data.status)")
                             }
+//                            .background(Color(uiColor: .neutral5))
                             .listRowSeparator(.hidden)
                             .cornerRadius(16)
                         }

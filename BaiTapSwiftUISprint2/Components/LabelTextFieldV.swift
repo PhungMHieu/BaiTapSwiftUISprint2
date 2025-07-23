@@ -12,7 +12,7 @@ struct LabelTextFieldV: View {
     //        @Binding var textField: String
     //        var type:  InformationNameType
     //        var onChangeText: ((InformationNameType, String) -> Void)?
-    @State var text: String
+    @Binding var text: String
     var type: LabelTextFieldType
     var body: some View {
         VStack(alignment: .leading, spacing: 8.0) {
