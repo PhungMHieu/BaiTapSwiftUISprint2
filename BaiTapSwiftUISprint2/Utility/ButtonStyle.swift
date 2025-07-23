@@ -19,7 +19,7 @@ struct ButtonStyleOnBoard: ButtonStyle {
             .frame(maxHeight: 56)
             .background(.primaryApp)
             .cornerRadius(16)
-            .padding(.horizontal,16)
+//            .padding(.horizontal,16)
             .padding(.bottom, 16)
 
     }

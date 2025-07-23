@@ -25,6 +25,7 @@ struct OnBoardTabView: View {
                 Text("Continue")
             }
             .buttonStyle(ButtonStyleOnBoard())
+            .padding(.horizontal,16)
             .animation(.smooth, value: 1)
         }
         .background(.backgroundApp2)

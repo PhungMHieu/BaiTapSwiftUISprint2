@@ -15,14 +15,33 @@ struct LabelTextFieldV: View {
     @Binding var text: String
     var type: LabelTextFieldType
     var body: some View {
-        VStack(alignment: .leading, spacing: 8.0) {
+        VStack(alignment: .leading, spacing: 12) {
             Text(type.title)
-            TextField(type.placeholder, text: $text)
-                .textFieldStyle(RoundedBorderTextFieldStyle())
+                .font(.system(size: 16))
+                .fontWeight(.medium)
+                .lineSpacing(24-UIFont.systemFont(ofSize: 16, weight: .medium).lineHeight)
+                .foregroundColor(.neutral15)
+            TextField(text: $text, label: {
+                Text("\(type.placeholder)")
+                    .font(.system(size: 16))
+                    .foregroundColor(.neutral3)
+            })
+            .frame(height: 52)
+            .padding(.horizontal,12)
+            .background(
+                RoundedRectangle(cornerRadius: 16)
+                    .fill(Color.white)
+            )
+            .cornerRadius(16)
+                
         }
+        
     }
 }
 
-//#Preview {
-//    LabelTextFieldV()
-//}
+#Preview {
+    LabelTextFieldV(text: .constant(""), type: .firstName)
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .background(Color.background)
+//    LabelTextFieldV(text: "Hello world", type: .firstName)
+}

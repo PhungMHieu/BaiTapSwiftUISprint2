@@ -32,12 +32,12 @@ enum LabelTextFieldType: String, CaseIterable {
     }
     var placeholder: String{
         switch self{
-        case.pulse: return "Enter your pulse"
-        case.hrv: return "Enter your hrv"
-        case.firstName: return "Enter your first name"
-        case.lastName: return "Enter your last name"
-        case.weight: return "Enter your weight"
-        case.height: return "Enter your height"
+        case.pulse: return "Enter pulse"
+        case.hrv: return "Enter hrv"
+        case.firstName: return "Enter first name"
+        case.lastName: return "Enter last name"
+        case.weight: return "Enter weight"
+        case.height: return "Enter height"
         }
     }
     
