@@ -18,7 +18,7 @@ enum SectionP:CaseIterable{
     case section3
     var row: [SettingModel]{
         switch self{
-        case .section1:
+        case.section1:
             return [
                 SettingModel(image: .icProfileCircle, title: "Profile")
             ]

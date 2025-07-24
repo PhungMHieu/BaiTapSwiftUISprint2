@@ -9,7 +9,22 @@ import SwiftUI
 
 struct InformationHeartV: View {
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack {
+            HStack{
+                LabelTextFieldV(text: .constant(""), type: .pulse)
+                LabelTextFieldV(text: .constant(""), type: .hrv)
+            }
+            Spacer()
+            Button {
+                
+            } label: {
+                Text("Continue")
+            }
+            .buttonStyle(ButtonStyleOnBoard())
+        }
+        .padding(16)
+        .background(Color.background)
+        
     }
 }
 

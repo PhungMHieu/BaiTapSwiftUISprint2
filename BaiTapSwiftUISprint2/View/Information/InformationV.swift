@@ -11,8 +11,9 @@ struct InformationV: View {
 //    @State private var showProfile = false
 //    @Binding var path: [Route]
 //    @State private var path = NavigationPath()
+    @EnvironmentObject var nar: NavigationManager
     var body: some View {
-//        NavigationStack {
+        NavigationStack {
             VStack(spacing: 21) {
                 HStack(spacing:12){
                     LabelTextFieldV(text: .constant(""), type: .firstName)
@@ -36,12 +37,18 @@ struct InformationV: View {
                     LabelTextFieldV(text: .constant(""), type: .height)
                 }
                 Spacer()
-                Button {
-//                    showProfile = true
+                NavigationLink {
+                    ProfileV()
                 } label: {
-                    Text("Update")
+                    Button {
+    //                    showProfile = true
+                    } label: {
+                        Text("Update")
+                    }
+                    .buttonStyle(ButtonStyleOnBoard())
                 }
-                .buttonStyle(ButtonStyleOnBoard())
+
+                
             }
             .padding(.top,24)
             .padding(.horizontal,16)
@@ -49,7 +56,7 @@ struct InformationV: View {
 //            .navigationDestination(isPresented:$showProfile) {
 //                ProfileV()
 //            }
-//        }
+        }
     }
 }
 

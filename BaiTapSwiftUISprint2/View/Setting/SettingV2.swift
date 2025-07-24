@@ -22,7 +22,7 @@ struct SettingV2: View {
                 .padding(.leading,23)
             
             NavigationStack {
-                List{
+                Form{
                     Section{
                         Image(.icLabelPremium)
                             .resizable()
@@ -63,9 +63,11 @@ struct SettingV2: View {
                     .padding(.bottom,16)
                     .padding(.horizontal,16)
                     Section {
-                        
-                        SettingItemV(title: "Profile", image: .icProfileCircle)
-                            
+                        NavigationLink {
+                            OnBoardTabView()
+                        } label: {
+                            SettingItemV(title: "Profile", image: .icProfileCircle)
+                        }
                         SettingItemV(title: "Profile", image: .icLike)
                         SettingItemV(title: "Profile", image: .icLike)
 //                            .listRowBackground(Color.blue)
