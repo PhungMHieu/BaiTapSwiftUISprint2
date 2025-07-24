@@ -19,7 +19,7 @@ struct HealthGuruV: View {
     var body: some View {
 //        ZStack {
 //            Rectangle().frame(maxWidth: .infinity,maxHeight: .)
-            VStack (){
+            VStack (spacing: 0){
                 Text("Health Guru")
                     .font(.system(size: 32))
                     .fontWeight(.semibold)
@@ -28,30 +28,22 @@ struct HealthGuruV: View {
                 Button {
                     toggled.toggle()
                 } label: {
-                    ZStack() {
-                        Image(.icCTAMeasure)
-                        Image(.icXMLID482)
-                    }
-                    .frame(maxWidth: .infinity)
+                    Image(.icCTAMeasure)
+//                        .resizable()
+//                        .frame(maxWidth: .infinity)
+                        .frame(height: 241)
+                        .scaledToFit()
                 }
+                .frame(maxWidth: .infinity)
+                .padding(.top,65)
+//                .padding()
                 .sheet(isPresented: $toggled) {
-                    HStack {
-                        LabelTextFieldV(text: $pulse, type: .pulse)
-                        LabelTextFieldV(text: $hrv, type: .hrv)
-                    }
-                    Button {
-                        guard let p = Int(pulse), let h = Int(hrv) else{
-                            return
-                        }
-                        measurement.addMeasurement(Measurement(pulse: p, hrv: h))
-
-                        toggled.toggle()
-                    } label: {
-                        Text("Add")
+                    NavigationStack {
+                        InformationHeartV(pulse: $pulse, hrv: $hrv,toggled: $toggled, measurement: measurement)
                     }
                 }
                 //                }
-                NavigationStack {
+//                NavigationStack {
                     List{
                         ForEach(measurement.measurements) { data in
                             HStack{
@@ -77,21 +69,21 @@ struct HealthGuruV: View {
 //                    .scrollContentBackground(Color.clear)
                     //                .background(Color.backlground1)
                     //                .background(Color.black)
-                    .overlay {
+                    
+                
+                
+                    .overlay() {
                         if(measurement.measurements.isEmpty){
-                            
-                            VStack(alignment: .leading) {
+                            VStack(spacing:24) {
                                 RateIndexV()
-                                HStack {
-                                    Image(.icLike5)
-                                    Text("Track daily")
-                                }
-                                Text("Click heart icon to log your data")
+                                TrackDailyClickV()
                             }
+                            .frame(maxWidth: .infinity)
+                            .padding(.horizontal,16)
 //                            .background(Color.blue)
                         }
                     }
-                }
+//                }
 //                .background(Color.blue)
                 
                 //                .navigationTitle(Text("List").padding())
@@ -114,4 +106,62 @@ struct HealthGuruV: View {
     HealthGuruV()
 //        .background(Color.backlground1)
 //        .background().background(Color.gray.opacity(0.2))
+}
+
+struct TrackDailyClickV: View {
+    var body: some View {
+        VStack(spacing:4) {
+            HStack(spacing:0) {
+                Image(.icLike5)
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .frame(width:24,height:24)
+                    .clipped()
+                Text("Track daily")
+                    .font(.system(size: 16, weight: .semibold))
+//                    .letter(spacing: 1)
+//                    .frame(height:24)
+                Spacer()
+                //                                            .lineSpacing(24-1)
+            }
+            .frame(maxWidth: .infinity)
+//            .padding(0)
+            HStack {
+                Text("Click heart icon to log your data")
+                    .font(.system(size: 14))
+                    .foregroundColor(.neutral2)
+                Spacer()
+            }
+        }
+        .frame(maxWidth: .infinity)
+        .padding(16)
+        .background(Color.neutral5)
+        .cornerRadius(16)
+    }
+}
+
+struct ExtractedView: View {
+    @Binding var pulse:String
+    @Binding var hrv:String
+    @Binding var toggled:Bool
+    @ObservedObject var measurement: MeasurementManager
+    var body: some View {
+        VStack {
+            HStack {
+                LabelTextFieldV(text: $pulse, type: .pulse)
+                LabelTextFieldV(text: $hrv, type: .hrv)
+            }
+            Button {
+                guard let p = Int(pulse), let h = Int(hrv) else{
+                    return
+                }
+                measurement.addMeasurement(Measurement(pulse: p, hrv: h))
+                
+                toggled.toggle()
+            } label: {
+                Text("Add")
+            }
+            
+        }
+    }
 }

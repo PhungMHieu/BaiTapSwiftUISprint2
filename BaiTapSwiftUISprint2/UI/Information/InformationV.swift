@@ -11,9 +11,10 @@ struct InformationV: View {
 //    @State private var showProfile = false
 //    @Binding var path: [Route]
 //    @State private var path = NavigationPath()
-    @EnvironmentObject var nar: NavigationManager
+    @EnvironmentObject var navi: NavigationManager
+//    @Binding var path: NavigationPath
     var body: some View {
-        NavigationStack {
+//        NavigationStack {
             VStack(spacing: 21) {
                 HStack(spacing:12){
                     LabelTextFieldV(text: .constant(""), type: .firstName)
@@ -37,31 +38,28 @@ struct InformationV: View {
                     LabelTextFieldV(text: .constant(""), type: .height)
                 }
                 Spacer()
-                NavigationLink {
-                    ProfileV()
-                } label: {
                     Button {
-    //                    showProfile = true
+                        navi.goTo(.profile)
+//                        path.append(Screen.profile)
                     } label: {
                         Text("Update")
                     }
                     .buttonStyle(ButtonStyleOnBoard())
                 }
-
-                
-            }
             .padding(.top,24)
             .padding(.horizontal,16)
             .background(Color.background)
+                
+//            }
 //            .navigationDestination(isPresented:$showProfile) {
 //                ProfileV()
 //            }
         }
     }
-}
 
-#Preview {
-    InformationV()
-        .frame(maxWidth: .infinity,maxHeight: .infinity)
-        .background(Color.background)
-}
+
+//#Preview {
+//    InformationV(path: <#Binding<NavigationPath>#>)
+//        .frame(maxWidth: .infinity,maxHeight: .infinity)
+//        .background(Color.background)
+//}

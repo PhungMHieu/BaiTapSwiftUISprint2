@@ -7,36 +7,28 @@
 
 import Foundation
 import SwiftUI
-enum AppScreen: Hashable{
-    case screenB
-    case screenC
+//enum AppScreen: Hashable{
+//    case information
+//    case profile
+//    case setting
+//}
+enum Screen: Hashable{
+    case information, profile,setting
 }
-class NavigationManager:ObservableObject{
+class NavigationManager : ObservableObject{
     @Published var path = NavigationPath()
-    func goTo(_ screen: AppScreen){
+    func goTo(_ screen: Screen){
         path.append(screen)
     }
-    func goBack(_ screen: AppScreen){
+    func goBack(_ screen: Screen){
         if !path.isEmpty{
             path.removeLast()
         }
     }
-    func popToRoot(_ screen: AppScreen){
-        path.removeLast(path.count)
+    func popToScreen(_ screen: Screen){
+        path.removeLast(2)
     }
-}
-struct NavigationRootView: View{
-    @StateObject private var nav = NavigationManager()
-    var body: some View{
-        NavigationStack(path: $nav.path) {
-            SettingV()
-                .navigationDestination(for: AppScreen.self) { screen in
-                    switch screen{
-                    case .screenB: InformationV()
-                    case .screenC: ProfileV()
-                    }
-                }
-        }
-        .environmentObject(nav)
+    func popToRoot(_ screen: Screen){
+        path.removeLast(path.count)
     }
 }

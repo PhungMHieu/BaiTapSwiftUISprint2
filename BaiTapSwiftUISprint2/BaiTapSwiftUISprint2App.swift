@@ -16,7 +16,8 @@ struct BaiTapSwiftUISprint2App: App {
 //            LazyV()
 //            OnBoardTabView()
 //            SettingV()
-            SettingHealthTabV()
+//            SettingHealthTabV()
+            RootV()
 //            HealthGuruV()
 //            HealthGridItemV(title: "Heart rate")
         }

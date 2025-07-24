@@ -8,6 +8,8 @@
 import SwiftUI
 //Struct metric
 struct ProfileV: View {
+//    @Binding var path: NavigationPath
+    @EnvironmentObject var navi: NavigationManager
     var metrics: [(String, String, String)] = [
         ("80", "Kg", "Weight"),
         ("180", "Cm", "Height"),
@@ -47,7 +49,7 @@ struct ProfileV: View {
                     }
                 }
 //                .padding(.horizontal,16)
-                .frame(maxWidth: .infinity)
+//                .frame(maxWidth: .infinity)
                 
 //                .padding(.horizontal,16)
             }
@@ -61,10 +63,11 @@ struct ProfileV: View {
             Spacer()
         //                .padding()
         }
+        .background(Color.background)
     }
 }
 
 #Preview {
     ProfileV()
-        .background(.backgroundApp2)
+//        .background(.backgroundApp2)
 }

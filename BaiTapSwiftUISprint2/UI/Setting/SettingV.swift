@@ -6,17 +6,16 @@
 //
 
 import SwiftUI
-enum ChildScreen: Hashable{
-    case information, profile
-}
+
 struct SettingV: View {
-    @EnvironmentObject var nav: NavigationManager
+    @EnvironmentObject var navi: NavigationManager
+//    @State private var path = NavigationPath()
     //    var data:[[SettingModel]] = [
     //        SettingModel(image: .icProfileCircle, title: "Profile"),
     //        SettingModel(image: .ic, title: <#T##String#>)
     //    ]
     //    var
-    @State var path = NavigationPath()
+//    @State var path = NavigationPath()
     var body: some View {
         //            .scaledToFit()
         
@@ -24,7 +23,7 @@ struct SettingV: View {
         //            .scaledToFill()
         //        VStack(spacing: 0) {
         //            .frame(alignment: .leading)
-        NavigationStack(path: $path){
+//        NavigationStack(path: $path){
             VStack(spacing:0) {
                 Text("Setting")
                     .font(.system(size: 32))
@@ -70,7 +69,7 @@ struct SettingV: View {
                                 //                                }
                                 if(row == ele.row.first && ele == SectionP.section1){
                                     Button {
-//                                        path.append("InformationV")
+                                        navi.goTo(.information)//                                        path.append("InformationV")
 //                                        nav.goTo(.screenB);                                        print("Button was tapped")
                                         //                                        Path.ap
                                     } label: {
@@ -163,7 +162,7 @@ struct SettingV: View {
                 .scrollContentBackground(.hidden)
                 //                .background(Color.red)
                 .background(Color(uiColor: .background))
-//                .navigationDestination(for: String.self, destination: { value in
+                //                .navigationDestination(for: String.self, destination: { value in
 //                    if value == "InformationV"{
 //                        InformationV()
 //                    }
@@ -189,7 +188,7 @@ struct SettingV: View {
             //        .padding(0)
         }
     }
-}
+//}
 #Preview {
     SettingV()
 }
