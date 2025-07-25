@@ -10,11 +10,8 @@ import SwiftUI
 struct HealthGuruV: View {
 //    @State private var lstData: [String]
     @StateObject private var measurement = MeasurementManager()
-    @State var pulse: String = ""
-    @State var hrv: String = ""
-//    @State var measurement: Measurement
-//    = ["Pulse 90", "SpO2 95%", "BPM 120", "ECG 120", "Respiratory Rate 20", "Pulse 100", "SpO2 90%", "BPM 110", "ECG 110", "Respiratory Rate 10"]
-////    = []
+//    @State var pulse: String = ""
+//    @State var hrv: String = ""
     @State private var toggled: Bool = false
     var body: some View {
 //        ZStack {
@@ -39,25 +36,31 @@ struct HealthGuruV: View {
 //                .padding()
                 .sheet(isPresented: $toggled) {
                     NavigationStack {
-                        InformationHeartV(pulse: $pulse, hrv: $hrv,toggled: $toggled, measurement: measurement)
+                        InformationHeartV(toggled: $toggled, measurement: measurement)
                     }
                 }
                 //                }
 //                NavigationStack {
                     List{
                         ForEach(measurement.measurements) { data in
-                            HStack{
-                                Text("\(data.hrv)")
-                                Text("\(data.pulse)")
-                                Text("\(data.status)")
-                            }
+//                            HStack{
+//                                Text("\(data.hrv)")
+//                                Text("\(data.pulse)")
+//                                Text("\(data.status)")
+//                            }
+                            RateIndexV(measurement: data)
+//                                .foregroundColor(.good)
 //                            .background(Color(uiColor: .neutral5))
                             .listRowSeparator(.hidden)
-                            .cornerRadius(16)
+//                            .cornerRadius(16)
                         }
+                        .listRowSpacing(12)
+                        .listRowBackground(Color.clear)
                     }
                     .scrollContentBackground(.hidden)
                     .background(Color(uiColor: .backlground1))
+                    .listStyle(.plain)
+//                    .padding(0)
 //                    .background(UIColo)
 //                    .onAppear{
 //                        UITableView.appearance().separatorStyle = .none

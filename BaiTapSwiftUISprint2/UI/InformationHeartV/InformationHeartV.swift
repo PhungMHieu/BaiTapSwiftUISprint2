@@ -8,8 +8,8 @@
 import SwiftUI
 
 struct InformationHeartV: View {
-    @Binding var pulse:String
-    @Binding var hrv:String
+    @State var pulse:String = ""
+    @State var hrv:String = ""
     @Binding var toggled:Bool
     @ObservedObject var measurement: MeasurementManager
     @Environment(\.dismiss) var dismiss
@@ -35,7 +35,7 @@ struct InformationHeartV: View {
 //        .padding(16)
         .padding(.horizontal,16)
         .padding(.bottom,16)
-        .padding(.top,-32)
+        .padding(.top,24)
         .background(Color.background)
         .toolbar {
             ToolbarItem (placement: .cancellationAction){
@@ -54,7 +54,7 @@ struct InformationHeartV: View {
             }
         }
 //        .navigationTitle("Information")
-//        .navigationBarTitleDisplayMode(.inline) // hoặc .large nếu thích
+        .navigationBarTitleDisplayMode(.inline) // hoặc .large nếu thích
 //        .navigationTitle("Inf")
 //        .ignoresSafeArea(.container, edges: .top)
         
@@ -64,18 +64,18 @@ struct InformationHeartV: View {
 //#Preview {
 ////    InformationHeartV(pulse: .constant(""), hrv: .constant(""), toggled: .constant(""), measurement: MeasurementManager)
 //}
-#Preview {
-    // Tạo các state mẫu
-    @State var pulse = "72"
-    @State var hrv = "55"
-    @State var toggled = false
-    let measurementManager = MeasurementManager()
-
-    return
-    InformationHeartV(
-        pulse: $pulse,
-        hrv: $hrv,
-        toggled: $toggled,
-        measurement: measurementManager
-    )
-}
+//#Preview {
+//    // Tạo các state mẫu
+//    @State var pulse = "72"
+//    @State var hrv = "55"
+//    @State var toggled = false
+//    let measurementManager = MeasurementManager()
+//
+////    return
+//    InformationHeartV(
+//        pulse: $pulse,
+//        hrv: $hrv,
+//        toggled: $toggled,
+//        measurement: measurementManager
+//    )
+//}

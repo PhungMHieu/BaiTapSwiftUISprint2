@@ -59,7 +59,7 @@ struct InformationV: View {
 
 
 //#Preview {
-//    InformationV(path: <#Binding<NavigationPath>#>)
+//    InformationV(path: .)
 //        .frame(maxWidth: .infinity,maxHeight: .infinity)
 //        .background(Color.background)
 //}

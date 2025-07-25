@@ -31,6 +31,16 @@ enum HealMetricLog:String,CaseIterable{
             return ""
         }
     }
+    func getValue(measurement: Measurement)->String{
+        switch self{
+        case.pulse: return String(measurement.pulse)
+        case.hrv: return String(measurement.hrv)
+        case.status: return (measurement.status).rawValue
+        }
+    }
+//    var color:ColorResource{
+//        switch self
+//    }
 //    var value:String{
 //        switch self {
 //        case .pulse:

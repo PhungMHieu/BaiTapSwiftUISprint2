@@ -12,10 +12,18 @@ struct OnBoardTabView: View {
     var body: some View {
         VStack(spacing:0) {
             TabView(selection: $selection) {
-                Page1V().tag(1)
-                LazyV().tag(2)
-                LazyV().tag(3)
-                LazyV().tag(4)
+                ForEach(OnBoardPage.allCases,id: \.hashValue) { page in
+                    if(page.page == 1){
+                        Page1V().tag(page.page)
+                    }else{
+                        LazyV(data: page.itemPage)
+                            .tag(page.page)
+                    }
+                }
+                
+//                LazyV().tag(2)
+//                LazyV().tag(3)
+//                LazyV().tag(4)
             }
             //        .background()
             .tabViewStyle(PageTabViewStyle(indexDisplayMode: .never))
@@ -27,6 +35,7 @@ struct OnBoardTabView: View {
             .buttonStyle(ButtonStyleOnBoard())
             .padding(.horizontal,16)
             .animation(.smooth, value: 1)
+            
         }
         .background(.backgroundApp2)
 //        .padding(16)

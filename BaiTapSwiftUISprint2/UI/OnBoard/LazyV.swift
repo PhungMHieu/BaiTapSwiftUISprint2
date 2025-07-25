@@ -8,7 +8,8 @@
 import SwiftUI
 
 struct LazyV: View {
-    private var data: [healGrid] = []
+    var data:[healGrid]
+//    var page:String
     var body: some View {
         let data = [
             healGrid(icon: .pulse, title: "Heart Rate"),
@@ -21,6 +22,9 @@ struct LazyV: View {
             GridItem(.flexible()),
 //            GridItem(.adaptive(minimum: 80))
         ]
+        VStack(spacing: 0){
+            
+        }
         ScrollView {
             LazyVGrid(columns: columns, spacing: 16) {
                 ForEach(data, id:\.title) { item in
@@ -35,5 +39,5 @@ struct LazyV: View {
 }
 
 #Preview {
-    LazyV()
+//    LazyV(data: [], page: "page1")
 }

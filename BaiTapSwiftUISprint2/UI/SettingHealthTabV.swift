@@ -15,7 +15,7 @@ struct SettingHealthTabV: View {
                 .tabItem {
                     Image(.icChartRed)
                     Text("Report")
-                        .font(.system(size: 14))
+//                        .font(.system(size: 14))
                         .foregroundColor(.primaryApp)
                 }
 //                .overlay {
@@ -27,8 +27,13 @@ struct SettingHealthTabV: View {
                     Text("Setting")
                         .foregroundColor(.primaryApp)
                 }
+                
         }
+        .background(.neutral5)
         .accentColor(.primaryApp)
+        .onAppear(){
+            UITabBar.appearance().backgroundColor = .neutral5
+        }
 //        .overlay {
 //            Text("Report")
 //        }

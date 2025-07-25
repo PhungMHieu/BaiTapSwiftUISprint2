@@ -22,7 +22,7 @@ struct SettingV2: View {
                 .padding(.leading,23)
             
             NavigationStack {
-                Form{
+                List{
                     Section{
                         Image(.icLabelPremium)
                             .resizable()
@@ -49,7 +49,7 @@ struct SettingV2: View {
                     //            let imageI = Image(.icLike)
                     //            LabeledContent("", value: "")
                     //            LabeledContent("Number", value: )
-                    Section() {
+                    Section {
                         SettingItemV(title: "Profile", image: .icProfileCircle)
 //                        SettingItemV()
 //                            .listRowBackground(Color.blue)
@@ -60,16 +60,16 @@ struct SettingV2: View {
                     .listRowBackground(Color.blue)
                     .listRowInsets(.init())
                     .listRowSeparator(.hidden)
-                    .padding(.bottom,16)
+//                    .padding(.bottom,16)
                     .padding(.horizontal,16)
                     Section {
-                        NavigationLink {
-                            OnBoardTabView()
-                        } label: {
-                            SettingItemV(title: "Profile", image: .icProfileCircle)
-                        }
+                        
+                        SettingItemV(title: "Profile", image: .icProfileCircle)
+                            .padding(.top,16)
+//                        }
                         SettingItemV(title: "Profile", image: .icLike)
                         SettingItemV(title: "Profile", image: .icLike)
+//                            .padding(.bottom16)
 //                            .listRowBackground(Color.blue)
 //                            .frame(maxWidth: .infinity)
 //                            .padding()
@@ -79,6 +79,7 @@ struct SettingV2: View {
 //                            .frame(height: 190)
 //                            .padding(0)
                     }
+//                    .padding(.bottom,16)
 //                    .cornerRadius(16)
                     .listRowBackground(
                         RoundedRectangle(cornerRadius: 12)

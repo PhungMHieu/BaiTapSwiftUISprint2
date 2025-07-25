@@ -24,6 +24,18 @@ struct Measurement: Identifiable{
             return .warning
         }
     }
+    var colorForStatus: ColorResource{
+        switch pulse{
+        case ..<60:
+            return .low
+        case 60...100:
+            return .good
+        case 101...:
+            return .warning
+        default:
+            return .neutral2
+        }
+    }
 }
 enum Status: String{
     case low = "Low"
