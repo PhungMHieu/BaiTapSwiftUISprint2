@@ -8,39 +8,30 @@
 import SwiftUI
 
 struct SettingHealthTabV: View {
-    @State var selection:Int = 1
+    @Binding var selection:Int
+    @EnvironmentObject var navi: NavigationManager
     var body: some View {
         TabView(selection: $selection) {
             HealthGuruV()
                 .tabItem {
-                    Image(.icChartRed)
+                    Image(selection == 1 ? .icChartRed : .icChart)
                     Text("Report")
-//                        .font(.system(size: 14))
-                        .foregroundColor(.primaryApp)
                 }
-//                .overlay {
-//                    Text("Report")
-//                }
+                .tag(1)
             SettingV()
                 .tabItem {
-                    Image(.icSettingRed)
+                    Image(selection == 2 ? .icSettingRed : .icSetting)
                     Text("Setting")
-                        .foregroundColor(.primaryApp)
                 }
-                
+                .tag(2)
         }
         .background(.neutral5)
-        .accentColor(.primaryApp)
         .onAppear(){
             UITabBar.appearance().backgroundColor = .neutral5
         }
-//        .overlay {
-//            Text("Report")
-//        }
-//        .frame(height: 80)
     }
 }
 
 #Preview {
-    SettingHealthTabV()
+    SettingHealthTabV(selection: .constant(1))
 }

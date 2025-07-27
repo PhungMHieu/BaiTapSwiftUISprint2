@@ -8,7 +8,9 @@
 import Foundation
 
 
-struct healGrid{
+struct HealGrid:Hashable,Identifiable{
+    let id = UUID().uuidString
     var icon:ImageResource
     var title:String
+    var isSelected:Bool = false
 }

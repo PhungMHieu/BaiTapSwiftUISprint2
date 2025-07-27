@@ -29,7 +29,6 @@ struct IndexBlockV: View {
                         .fontWeight(.medium)
                         .foregroundColor(Color(value.colorForStatus))
                         .multilineTextAlignment(.leading)
-//                        .frame(maxWidth: .infinity)
                 }else{
                     Text("--")
                         .font(.system(size: 18))
@@ -40,18 +39,10 @@ struct IndexBlockV: View {
                         .fontWeight(.medium)
                         .foregroundColor(.neutral2)
                         
-//                        .frame(maxWidth: .infinity)
                 }
-//                Spacer()
-//                                    .frame(maxWidth: .infinity)
-//                Spacer()
             }
-//            .frame(maxWidth: 75)
-//            .frame(maxWidth: .infinity)
         }
         .frame(maxWidth: .infinity)
-//        .padding(.trailing,12)
-//        .background()
     }
 }
 

@@ -8,31 +8,29 @@
 import SwiftUI
 
 struct InformationHeartV: View {
-    @State var pulse:String = ""
-    @State var hrv:String = ""
     @Binding var toggled:Bool
     @ObservedObject var measurement: MeasurementManager
     @Environment(\.dismiss) var dismiss
     var body: some View {
         VStack {
-//            Text("Information")
             HStack(spacing:16){
-                LabelTextFieldV(text: $pulse, type: .pulse)
-                LabelTextFieldV(text: $hrv, type: .hrv)
+                LabelTextFieldV(text: $measurement.pulse, type: .pulse)
+                LabelTextFieldV(text: $measurement.hrv, type: .hrv)
             }
             Spacer()
             Button {
-                guard let p = Int(pulse), let h = Int(hrv) else{
-                    return
-                }
-                measurement.addMeasurement(Measurement(pulse: p, hrv: h))
+                measurement.addMeasurement()
                 toggled.toggle()
             } label: {
                 Text("Add")
+                    .frame(maxWidth: .infinity,maxHeight: .infinity)
             }
-            .buttonStyle(ButtonStyleOnBoard())
+            .modifier(ButtonOnBoardModifier())
+            .background(measurement.canAddMeasurement ? Color.primaryApp:Color.neutral3)
+            .cornerRadius(16)
+            .padding(.bottom, 16)
+            .disabled(!measurement.canAddMeasurement)
         }
-//        .padding(16)
         .padding(.horizontal,16)
         .padding(.bottom,16)
         .padding(.top,24)
@@ -40,7 +38,6 @@ struct InformationHeartV: View {
         .toolbar {
             ToolbarItem (placement: .cancellationAction){
                 Button {
-//                   toggled.toggle()
                     dismiss()
                 } label: {
                     Image(systemName: "xmark")
@@ -53,29 +50,10 @@ struct InformationHeartV: View {
                     .font(.system(size: 20,weight: .bold))
             }
         }
-//        .navigationTitle("Information")
-        .navigationBarTitleDisplayMode(.inline) // hoặc .large nếu thích
-//        .navigationTitle("Inf")
-//        .ignoresSafeArea(.container, edges: .top)
-        
+        .navigationBarTitleDisplayMode(.inline)
     }
 }
 
-//#Preview {
-////    InformationHeartV(pulse: .constant(""), hrv: .constant(""), toggled: .constant(""), measurement: MeasurementManager)
-//}
-//#Preview {
-//    // Tạo các state mẫu
-//    @State var pulse = "72"
-//    @State var hrv = "55"
-//    @State var toggled = false
-//    let measurementManager = MeasurementManager()
-//
-////    return
-//    InformationHeartV(
-//        pulse: $pulse,
-//        hrv: $hrv,
-//        toggled: $toggled,
-//        measurement: measurementManager
-//    )
-//}
+#Preview {
+    InformationHeartV(toggled: .constant(true), measurement: .init())
+}

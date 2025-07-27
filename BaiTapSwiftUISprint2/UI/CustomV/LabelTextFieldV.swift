@@ -8,10 +8,6 @@
 import SwiftUI
 
 struct LabelTextFieldV: View {
-    //    var body: some View {
-    //        @Binding var textField: String
-    //        var type:  InformationNameType
-    //        var onChangeText: ((InformationNameType, String) -> Void)?
     @Binding var text: String
     var type: LabelTextFieldType
     var body: some View {
@@ -33,9 +29,7 @@ struct LabelTextFieldV: View {
                     .fill(Color.white)
             )
             .cornerRadius(16)
-                
         }
-        
     }
 }
 
@@ -43,5 +37,4 @@ struct LabelTextFieldV: View {
     LabelTextFieldV(text: .constant(""), type: .firstName)
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(Color.background)
-//    LabelTextFieldV(text: "Hello world", type: .firstName)
 }

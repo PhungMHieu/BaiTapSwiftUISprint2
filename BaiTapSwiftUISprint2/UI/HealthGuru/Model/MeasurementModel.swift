@@ -7,9 +7,6 @@
 
 import Foundation
 
-//struct HealthModel: ObservableObject{
-//}
-//struct HealthModel
 struct Measurement: Identifiable{
     let id = UUID().uuidString
     var pulse: Int
@@ -41,13 +38,4 @@ enum Status: String{
     case low = "Low"
     case normal = "Good"
     case warning = "Warning"
-}
-class MeasurementManager: ObservableObject{
-    @Published var measurements: [Measurement] = []
-    func addMeasurement(_ measument: Measurement){
-        self.measurements.append(measument)
-    }
-//    func isEnableAction(_ measument: Measurement){
-//        if
-//    }
 }

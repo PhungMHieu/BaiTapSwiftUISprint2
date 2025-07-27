@@ -6,27 +6,17 @@
 //
 
 import SwiftUI
-//Struct metric
 struct ProfileV: View {
-//    @Binding var path: NavigationPath
     @EnvironmentObject var navi: NavigationManager
-    var metrics: [(String, String, String)] = [
-        ("80", "Kg", "Weight"),
-        ("180", "Cm", "Height"),
-        ("28","","Age"),
-        ("Male","","Gender")
-    ]
     var body: some View {
-        
         VStack(spacing:0) {
-            //                Spacer()
             Image(systemName: "person.circle.fill")
                 .resizable()
                 .aspectRatio(contentMode: .fit)
                 .frame(width: 108)
                 .foregroundColor(.primaryApp)
                 .padding(.top,24)
-            Text("John Weak")
+            Text(navi.userProfile?.fullName ?? "John Weak")
                 .font(.system(size: 36))
                 .fontWeight(.semibold)
                 .foregroundColor(.neutral15)
@@ -37,21 +27,26 @@ struct ProfileV: View {
                     .fontWeight(.medium)
                     .foregroundColor(.neutral1)
                     .padding(.top,0)
-                Text("23.5")
+                Text(String(navi.userProfile?.calculateBMI() ?? 25))
                     .font(.system(size: 64))
                     .fontWeight(.bold)
                     .foregroundColor(.good)
                 Divider()
                     .padding(.horizontal,16)
                 HStack(spacing: 25.67) {
-                    ForEach(Array(metrics.enumerated()), id: \.offset) { index, metric in
-                        MetricV(value: metric.0, unit: metric.1, title: metric.2)
+                    ForEach(MetricType.allCases, id: \.rawValue) { metricType in
+                        switch metricType{
+                        case .height:
+                            MetricV(value: String(Int(navi.userProfile?.height ?? 0)), type: metricType)
+                        case .weight:
+                            MetricV(value: String(Int(navi.userProfile?.weight ?? 0)), type: metricType )
+                        case .age:
+                            MetricV(value: "29",type: metricType)
+                        case .gender:
+                            MetricV(value: String(navi.userProfile?.gender.description ?? "Other"), type: metricType)
+                        }
                     }
                 }
-//                .padding(.horizontal,16)
-//                .frame(maxWidth: .infinity)
-                
-//                .padding(.horizontal,16)
             }
             .frame(height: 194)
             .background(Color.neutral5)
@@ -59,15 +54,35 @@ struct ProfileV: View {
             .padding(.horizontal,31.5)
             .padding(.top,28)
             
-            //            .padding(.t)
             Spacer()
-        //                .padding()
         }
         .background(Color.background)
+        .navigationTitle("Profile")
+        .navigationBarTitleDisplayMode(.inline)
+        .navigationBarBackButtonHidden(true)
+        .toolbar {
+            ToolbarItem(placement: .topBarLeading) {
+                Button {
+                    navi.popToRoot()
+                } label: {
+                    Image("icLeft2")
+                }
+            }
+            ToolbarItem(placement: .topBarTrailing) {
+                Button {
+                    navi.goTo(.information)
+                } label: {
+                    Text("Edit")
+                        .font(.system(size: 16))
+                        .fontWeight(.semibold)
+                        .foregroundColor(.primary1)
+                }
+            }
+        }
     }
 }
 
 #Preview {
-    ProfileV()
+//    ProfileV()
 //        .background(.backgroundApp2)
 }

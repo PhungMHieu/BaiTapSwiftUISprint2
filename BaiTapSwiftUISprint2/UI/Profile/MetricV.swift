@@ -6,11 +6,27 @@
 //
 
 import SwiftUI
-
+enum MetricType:String,CaseIterable,Hashable{
+    case weight = "Weight"
+    case height = "Height"
+    case age = "Age"
+    case gender = "Gender"
+    var unit:String{
+        switch self{
+        case .weight:
+            "kg"
+        case .height:
+            "cm"
+        case .age:
+            ""
+        case .gender:
+            ""
+        }
+    }
+}
 struct MetricV: View {
     var value: String
-    var unit: String
-    var title: String
+    var type: MetricType
     var body: some View {
         VStack {
             HStack{
@@ -18,12 +34,12 @@ struct MetricV: View {
                     .font(.system(size: 20))
                     .fontWeight(.semibold)
                     .foregroundColor(.good)
-                Text(unit)
+                Text(type.unit)
                     .font(.system(size: 20))
                     .fontWeight(.semibold)
                     .foregroundColor(.good)
             }
-            Text(title)
+            Text(type.rawValue)
                 .font(.system(size: 14))
                 .fontWeight(.medium)
                 .foregroundColor(.neutral3)
@@ -32,6 +48,6 @@ struct MetricV: View {
 }
 
 #Preview {
-    MetricV(value: "80", unit: "Kg", title: "Weight")
+//    MetricV(metric: /*<#Metric#>*/, value: "80", unit: "Kg", title: "Weight")
 }
 

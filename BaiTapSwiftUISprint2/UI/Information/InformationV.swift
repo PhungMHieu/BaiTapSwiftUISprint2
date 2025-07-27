@@ -8,17 +8,12 @@
 import SwiftUI
 
 struct InformationV: View {
-//    @State private var showProfile = false
-//    @Binding var path: [Route]
-//    @State private var path = NavigationPath()
     @EnvironmentObject var navi: NavigationManager
-//    @Binding var path: NavigationPath
     var body: some View {
-//        NavigationStack {
             VStack(spacing: 21) {
                 HStack(spacing:12){
-                    LabelTextFieldV(text: .constant(""), type: .firstName)
-                    LabelTextFieldV(text: .constant(""), type: .lastName)
+                    LabelTextFieldV(text: $navi.firstName, type: .firstName)
+                    LabelTextFieldV(text: $navi.lastName, type: .lastName)
                 }
                 VStack(spacing: 12) {
                     Text("Gender")
@@ -27,33 +22,37 @@ struct InformationV: View {
                         .foregroundColor(.neutral15)
                         .lineSpacing(24-UIFont.systemFont(ofSize: 16, weight: .medium).lineHeight)
                         .frame(maxWidth: .infinity,alignment: .leading)
-                    Picker(selection: .constant(1), label: Text("Gender")) {
-                        Text("Male").tag(1)
-                        Text("Female").tag(2)
+                    Picker(selection: $navi.gender, label: Text("Gender")) {
+                        ForEach(Gender.allCases, id: \.hashValue) { gender in
+                            Text(gender.description).tag(gender)
+                        }
                     }
                     .pickerStyle(.segmented)
                 }
                 HStack(spacing:12){
-                    LabelTextFieldV(text: .constant(""), type: .weight)
-                    LabelTextFieldV(text: .constant(""), type: .height)
+                    LabelTextFieldV(text: $navi.weightText, type: .weight)
+                    LabelTextFieldV(text: $navi.heightText, type: .height)
                 }
                 Spacer()
                     Button {
+                        navi.saveUserProfile()
                         navi.goTo(.profile)
 //                        path.append(Screen.profile)
                     } label: {
                         Text("Update")
+                            .frame(maxWidth: .infinity, maxHeight: .infinity)
                     }
-                    .buttonStyle(ButtonStyleOnBoard())
+                    .modifier(ButtonOnBoardModifier())
+                    .background(navi.inputValid ? Color.primaryApp:Color.neutral3)
+                    .cornerRadius(16)
+                    .padding(.bottom, 16)
+                    .disabled(!navi.inputValid)
                 }
             .padding(.top,24)
             .padding(.horizontal,16)
             .background(Color.background)
-                
-//            }
-//            .navigationDestination(isPresented:$showProfile) {
-//                ProfileV()
-//            }
+            .navigationTitle("Information")
+            .navigationBarTitleDisplayMode(.inline)
         }
     }
 

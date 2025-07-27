@@ -9,42 +9,64 @@ import SwiftUI
 
 @main
 struct BaiTapSwiftUISprint2App: App {
-
+    @AppStorage(OnBoardingKey.isCompleted.rawValue)
+    var isCompleted:Bool = false
+    init() {
+        setUpNavBar()
+        setUpTabBar()
+    }
     var body: some Scene {
         WindowGroup {
-//            ContentView()
-//            Page1V()
-//            LazyV()
-//            OnBoardTabView()
-//            SettingV()
-//            SettingHealthTabV()
-            RootV()
-                .onAppear(){
-                    UINavigationBar.appearance().titleTextAttributes = [
-                        .font: UIFont.systemFont(ofSize: 50)
-                    ]
-//                    UINavigationBar.appearance().app
-                    let appearance: UITabBarAppearance = {
-                        let app = UITabBarAppearance()
-//                        app.inlineLayoutAppearance.normal.titleTextAttributes = [
-//                            .font: UIFont.systemFont(ofSize: 50)
-//                        ]
-                        app.stackedLayoutAppearance.normal.titleTextAttributes = [
-                            .font: UIFont.systemFont(ofSize: 50)
-                        ]
-//                        app.compactInlineLayoutAppearance.normal.titleTextAttributes = [
-//                            .font: UIFont.systemFont(ofSize: 50)
-//                        ]
-                        
-                        return app
-                    }()
-                    UITabBar.appearance().standardAppearance = appearance
-                    UITableView.appearance().sectionHeaderHeight = 0
-//                    UITabBar.appearance().scrollEdgeAppearance = appearance
-                }
-                
-//            HealthGuruV()
-//            HealthGridItemV(title: "Heart rate")
+            if(isCompleted){
+                RootV()
+            }else{
+                OnBoardTabView()
+            }
         }
     }
 }
+func setUpNavBar(){
+    let appearance = UINavigationBarAppearance()
+    appearance.configureWithOpaqueBackground()
+    appearance.backgroundColor = .clear
+    UINavigationBar.appearance().tintColor = .neutral2
+    appearance.titleTextAttributes = [
+        .font: UIFont.boldSystemFont(ofSize: 20),
+        .foregroundColor: UIColor.neutral1
+    ]
+
+    let backImage = UIImage.icLeft2.withRenderingMode(.alwaysOriginal)
+    appearance.setBackIndicatorImage(backImage, transitionMaskImage: backImage)
+    let backButtonAppearance = UIBarButtonItemAppearance()
+    backButtonAppearance.normal.titleTextAttributes = [
+        .foregroundColor: UIColor.clear
+    ]
+    appearance.backButtonAppearance = backButtonAppearance
+    appearance.shadowColor = .clear
+    
+
+    UINavigationBar.appearance().standardAppearance = appearance
+    UINavigationBar.appearance().scrollEdgeAppearance = appearance
+    UINavigationBar.appearance().compactAppearance = appearance
+    
+}
+func setUpTabBar(){
+    let apperance = UITabBarAppearance()
+
+    apperance.backgroundColor = .neutral5
+    apperance.shadowColor = .clear
+    let normalAttributes: [NSAttributedString.Key: Any] = [
+        .foregroundColor: UIColor.neutral4,
+        .font: UIFont.systemFont(ofSize: 14)
+    ]
+    let selectedAttributes: [NSAttributedString.Key: Any] = [
+        .foregroundColor: UIColor.primaryApp,
+        .font: UIFont.systemFont(ofSize: 14)
+    ]
+    apperance.stackedLayoutAppearance.normal.titleTextAttributes = normalAttributes
+    apperance.stackedLayoutAppearance.selected
+        .titleTextAttributes = selectedAttributes
+    UITabBar.appearance().standardAppearance = apperance
+    UITabBar.appearance().scrollEdgeAppearance = apperance
+}
+

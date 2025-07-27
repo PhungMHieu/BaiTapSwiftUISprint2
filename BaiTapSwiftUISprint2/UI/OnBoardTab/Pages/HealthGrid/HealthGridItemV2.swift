@@ -9,16 +9,23 @@ import SwiftUI
 
 struct HealthGridItemV2: View {
     var title: String
-    var image: ImageResource
+    @State var image: ImageResource
+    @State var imageCheckBox: ImageResource = .monotoneApple
+    @Binding var isSelected: Bool
+//    @Binding var isSelected: Bool
     var body: some View {
         //        Text()
 //        var image: String
 //        ZStack {
         Button(action: {
-            print("was tapped")
+            isSelected.toggle()
+            switch isSelected{
+            case false: imageCheckBox = .monotoneApple
+            case true: imageCheckBox = .monotoneCoffee
+            }
         }, label: {
             VStack(alignment: .leading,spacing: 0){
-                Image(.monotoneApple)
+                Image(imageCheckBox)
                     .padding(.top, 16)
                     .padding(.leading, 16)
                 //                ZStack(){
@@ -39,7 +46,10 @@ struct HealthGridItemV2: View {
             .frame(width: (UIScreen.main.bounds.width-48)/2,height: 195)
             .cornerRadius(20)
 //            .border(RoundedRectangle(cornerRadius: 20, style: .circular), width: 1.5)
-//            .border(RoundedRectangle(cornerRadius: 20), width: 1)
+            .overlay(
+                RoundedRectangle(cornerRadius: 20)
+                    .stroke(isSelected ? Color.primary1:Color.clear, lineWidth: 1.5))
+            
 //            .buttonBorderShape(.roundedRectangle(radius: <#T##CGFloat#>))
             .aspectRatio(CGSize(width:164, height:195), contentMode: .fit)
         })
@@ -51,6 +61,6 @@ struct HealthGridItemV2: View {
 }
 
 #Preview {
-    HealthGridItemV2(title: "Heart issue",image: .pulse)
+    HealthGridItemV2(title: "Heart issue",image: .pulse, isSelected: .constant(false))
         .background(.neutral3)
 }

@@ -38,17 +38,4 @@ enum HealMetricLog:String,CaseIterable{
         case.status: return (measurement.status).rawValue
         }
     }
-//    var color:ColorResource{
-//        switch self
-//    }
-//    var value:String{
-//        switch self {
-//        case .pulse:
-//            return "120"
-//        case .hrv:
-//            return "120"
-//        case .status:
-//            return "OK"
-//        }
-//    }
 }
