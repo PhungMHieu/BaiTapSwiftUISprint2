@@ -15,6 +15,7 @@ struct IndexBlockV: View {
             Text(healMetricLogModel.title)
                 .font(.system(size: 14))
                 .fontWeight(.medium)
+                .tracking(0.2)
                 .foregroundColor(.neutral3)
             HStack(spacing: 4) {
                 if let value = self.value{
@@ -22,21 +23,23 @@ struct IndexBlockV: View {
                         .font(.system(size: 18))
                         .fontWeight(.bold)
                         .foregroundColor(Color(value.colorForStatus))
-                        .multilineTextAlignment(.leading)
-                        
+                        .padding(.bottom,2)
                     Text(healMetricLogModel.unit)
                         .font(.system(size: 16))
                         .fontWeight(.medium)
+                        .tracking(0.2)
                         .foregroundColor(Color(value.colorForStatus))
-                        .multilineTextAlignment(.leading)
                 }else{
                     Text("--")
                         .font(.system(size: 18))
                         .fontWeight(.bold)
+                        .lineSpacing(32-UIFont.systemFont(ofSize: 18, weight: .bold).lineHeight)
                         .foregroundColor(.neutral2)
+                        .padding(.bottom,2)
                     Text(healMetricLogModel.unit)
                         .font(.system(size: 16))
                         .fontWeight(.medium)
+                        .tracking(0.2)
                         .foregroundColor(.neutral2)
                         
                 }

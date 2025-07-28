@@ -16,6 +16,7 @@ struct HealthGuruV: View {
                     .font(.system(size: 32))
                     .fontWeight(.semibold)
                     .padding(.leading)
+                    .tracking(0.1)
                     .frame(maxWidth: .infinity,alignment: .leading)
                 Button {
                     toggled.toggle()
@@ -76,12 +77,16 @@ struct TrackDailyClickV: View {
                     .clipped()
                 Text("Track daily")
                     .font(.system(size: 16, weight: .semibold))
+                    .padding(.bottom,4)
+                    .tracking(0.2)
+//                    .lineSpacing(24-16)
                 Spacer()
             }
             .frame(maxWidth: .infinity)
             HStack {
                 Text("Click heart icon to log your data")
                     .font(.system(size: 14))
+                    .tracking(0.4)
                     .foregroundColor(.neutral2)
                 Spacer()
             }

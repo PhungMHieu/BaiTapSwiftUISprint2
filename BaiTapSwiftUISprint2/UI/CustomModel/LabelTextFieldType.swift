@@ -34,10 +34,10 @@ enum LabelTextFieldType: String, CaseIterable {
         switch self{
         case.pulse: return "Enter pulse"
         case.hrv: return "Enter hrv"
-        case.firstName: return "Enter first name"
-        case.lastName: return "Enter last name"
-        case.weight: return "Enter weight"
-        case.height: return "Enter height"
+        case.firstName: return "Enter first name..."
+        case.lastName: return "Enter last name..."
+        case.weight: return "Enter weight..."
+        case.height: return "Enter height..."
         }
     }
     

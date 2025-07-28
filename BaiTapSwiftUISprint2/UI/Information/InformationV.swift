@@ -24,7 +24,10 @@ struct InformationV: View {
                         .frame(maxWidth: .infinity,alignment: .leading)
                     Picker(selection: $navi.gender, label: Text("Gender")) {
                         ForEach(Gender.allCases, id: \.hashValue) { gender in
-                            Text(gender.description).tag(gender)
+                            Text(gender.description)
+//                                .font(.system(size: 13,weight:.semibold))
+                                .tag(gender)
+                            
                         }
                     }
                     .pickerStyle(.segmented)
@@ -58,7 +61,5 @@ struct InformationV: View {
 
 
 //#Preview {
-//    InformationV(path: .)
-//        .frame(maxWidth: .infinity,maxHeight: .infinity)
-//        .background(Color.background)
+//    InformationV()
 //}

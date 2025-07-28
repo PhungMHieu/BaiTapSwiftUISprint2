@@ -22,7 +22,7 @@ struct ProfileV: View {
                 .foregroundColor(.neutral15)
                 .padding(.top,24)
             VStack(spacing: 12){
-                Text("Your bmi:")
+                Text("Your BMI:")
                     .font(.system(size: 16))
                     .fontWeight(.medium)
                     .foregroundColor(.neutral1)
@@ -41,7 +41,7 @@ struct ProfileV: View {
                         case .weight:
                             MetricV(value: String(Int(navi.userProfile?.weight ?? 0)), type: metricType )
                         case .age:
-                            MetricV(value: "29",type: metricType)
+                            MetricV(value: "---",type: metricType)
                         case .gender:
                             MetricV(value: String(navi.userProfile?.gender.description ?? "Other"), type: metricType)
                         }
@@ -83,6 +83,7 @@ struct ProfileV: View {
 }
 
 #Preview {
+//    ProfileV()
 //    ProfileV()
 //        .background(.backgroundApp2)
 }

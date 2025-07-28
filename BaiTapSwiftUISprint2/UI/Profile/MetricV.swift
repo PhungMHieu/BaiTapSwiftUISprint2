@@ -28,8 +28,8 @@ struct MetricV: View {
     var value: String
     var type: MetricType
     var body: some View {
-        VStack {
-            HStack{
+        VStack(spacing:5) {
+            HStack(alignment:.center){
                 Text(value)
                     .font(.system(size: 20))
                     .fontWeight(.semibold)
@@ -48,6 +48,6 @@ struct MetricV: View {
 }
 
 #Preview {
-//    MetricV(metric: /*<#Metric#>*/, value: "80", unit: "Kg", title: "Weight")
+    MetricV(value: "70", type: .weight)
 }
 
