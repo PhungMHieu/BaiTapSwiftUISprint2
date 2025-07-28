@@ -9,8 +9,7 @@ import SwiftUI
 
 @main
 struct BaiTapSwiftUISprint2App: App {
-    @AppStorage(OnBoardingKey.isCompleted.rawValue)
-    var isCompleted:Bool = false
+    @AppStorage(OnBoardingKey.isCompleted.rawValue) var isCompleted:Bool = false
     init() {
         setUpNavBar()
         setUpTabBar()
@@ -19,6 +18,10 @@ struct BaiTapSwiftUISprint2App: App {
         WindowGroup {
             if(isCompleted){
                 RootV()
+                    .onAppear(){
+                        setUpNavBar()
+                        setUpTabBar()
+                    }
             }else{
                 OnBoardTabView()
             }
@@ -51,22 +54,22 @@ func setUpNavBar(){
     
 }
 func setUpTabBar(){
-    let apperance = UITabBarAppearance()
-    apperance.configureWithTransparentBackground()
-    apperance.backgroundImage = .imgBackgroundTabBar
-    apperance.shadowColor = .clear
-    let normalAttributes: [NSAttributedString.Key: Any] = [
-        .foregroundColor: UIColor.neutral4,
-        .font: UIFont.systemFont(ofSize: 14)
-    ]
-    let selectedAttributes: [NSAttributedString.Key: Any] = [
-        .foregroundColor: UIColor.primaryApp,
-        .font: UIFont.systemFont(ofSize: 14)
-    ]
-    apperance.stackedLayoutAppearance.normal.titleTextAttributes = normalAttributes
-    apperance.stackedLayoutAppearance.selected
-        .titleTextAttributes = selectedAttributes
-    UITabBar.appearance().standardAppearance = apperance
-    UITabBar.appearance().scrollEdgeAppearance = apperance
+        let apperance = UITabBarAppearance()
+        apperance.configureWithTransparentBackground()
+        apperance.backgroundColor = .clear
+        apperance.backgroundImage = .imgBackgroundTabBar
+        apperance.shadowColor = .clear
+        let normalAttributes: [NSAttributedString.Key: Any] = [
+            .foregroundColor: UIColor.neutral4,
+            .font: UIFont.systemFont(ofSize: 14)
+        ]
+        let selectedAttributes: [NSAttributedString.Key: Any] = [
+            .foregroundColor: UIColor.primaryApp,
+            .font: UIFont.systemFont(ofSize: 14)
+        ]
+        apperance.stackedLayoutAppearance.normal.titleTextAttributes = normalAttributes
+        apperance.stackedLayoutAppearance.selected
+            .titleTextAttributes = selectedAttributes
+        UITabBar.appearance().standardAppearance = apperance
+        UITabBar.appearance().scrollEdgeAppearance = apperance
 }
-

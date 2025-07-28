@@ -25,6 +25,25 @@ struct SettingHealthTabV: View {
                 }
                 .tag(2)
         }
+        .onAppear(){
+                UITabBar.appearance().backgroundColor = .clear
+        }
+//        .onAppear(){
+//            let appearance = UITabBarAppearance()
+//            appearance.configureWithTransparentBackground()
+//            if let img = UIImage(named: "imgBackgroundTabBar") {
+//                print("✅ Ảnh đã load: \(img)")
+//            } else {
+//                print("❌ Không tìm thấy ảnh background tab bar")
+//            }
+//            appearance.backgroundImage = UIImage(named: "imgBackgroundTabBar")
+//            appearance.shadowColor = .clear
+//
+//            UITabBar.appearance().standardAppearance = appearance
+//            if #available(iOS 15.0, *) {
+//                UITabBar.appearance().scrollEdgeAppearance = appearance
+//            }
+//        }
     }
 }
 

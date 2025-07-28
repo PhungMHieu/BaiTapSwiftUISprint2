@@ -33,6 +33,7 @@ struct HealthGridItemV2: View {
                     .padding(.bottom, 18)
                     .font(.system(size: 18))
                     .multilineTextAlignment(.leading)
+                    .lineSpacing(26-UIFont.systemFont(ofSize: 18, weight: .regular).lineHeight)
                     .foregroundStyle(.neutral2)
             }
             .background(.neutral5)
