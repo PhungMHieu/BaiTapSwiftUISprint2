@@ -12,11 +12,7 @@ struct HealthGridItemV2: View {
     @State var image: ImageResource
     @State var imageCheckBox: ImageResource = .monotoneApple
     @Binding var isSelected: Bool
-//    @Binding var isSelected: Bool
     var body: some View {
-        //        Text()
-//        var image: String
-//        ZStack {
         Button(action: {
             isSelected.toggle()
             switch isSelected{
@@ -45,19 +41,12 @@ struct HealthGridItemV2: View {
             .background(.neutral5)
             .frame(width: (UIScreen.main.bounds.width-48)/2,height: 195)
             .cornerRadius(20)
-//            .border(RoundedRectangle(cornerRadius: 20, style: .circular), width: 1.5)
             .overlay(
                 RoundedRectangle(cornerRadius: 20)
                     .stroke(isSelected ? Color.primary1:Color.clear, lineWidth: 1.5))
-            
-//            .buttonBorderShape(.roundedRectangle(radius: <#T##CGFloat#>))
             .aspectRatio(CGSize(width:164, height:195), contentMode: .fit)
         })
-//        .stro
     }
-//        }
-//        .frame(maxWidth: .infinity, maxHeight: .infinity)
-//        .background(.backgroundApp2)
 }
 
 #Preview {

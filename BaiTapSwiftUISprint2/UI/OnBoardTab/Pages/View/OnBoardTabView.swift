@@ -10,24 +10,27 @@ struct OnBoardTabView: View {
     @StateObject var onBoardManager =  TabViewManager()
     var body: some View {
         VStack(spacing:0) {
-            
+
             TabView(selection: $onBoardManager.currentTab) {
                 ForEach(OnBoardPage.allCases,id: \.hashValue) { page in
                     if(page.rawValue == 0){
                         Page1V()
-                            .background(Color.clear)
+//                            .background(Color.red)
                             .tag(page)
+                            .background(Color.background)
+                            .gesture(DragGesture())
                     }else{
-                        if let items = onBoardManager.tabs[page] {
-                            Page234V(data:Binding(get: {
+                            Page234V(
+                                data:Binding(get: {
                                 onBoardManager.tabs[page]!
                             }, set: {
                                 onBoardManager.tabs[page] = $0
                             })
-                            , title: page.titlePage)
+                            ,
+                                title: page.titlePage)
                             .tag(page)
                             .background(Color.backgroundApp2)
-                        }
+                            .gesture(DragGesture())
                     }
                 }
             }

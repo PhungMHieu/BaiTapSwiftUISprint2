@@ -17,6 +17,10 @@ struct InformationHeartV: View {
                 LabelTextFieldV(text: $measurement.pulse, type: .pulse)
                 LabelTextFieldV(text: $measurement.hrv, type: .hrv)
             }
+            .onAppear {
+                measurement.pulse = ""
+                measurement.hrv = ""
+            }
             Spacer()
             Button {
                 measurement.addMeasurement()

@@ -22,7 +22,6 @@ struct RootV: View {
                     case .profile: ProfileV()
                     }
                 }
-                
         }
         .environmentObject(navigationManager)
     }

@@ -33,7 +33,17 @@ struct RateIndexV: View {
 }
 
 #Preview {
-    RateIndexV(measurement: Measurement(pulse: 100, hrv: 100))
-        .frame(maxWidth: .infinity,maxHeight: .infinity)
-        .background(.black)
+    ZStack{
+        Color.blue // ✅ Phủ nền xanh cho toàn bộ stack
+                .ignoresSafeArea() // nếu muốn phủ kín toàn màn hình
+        VStack{
+            RateIndexV(measurement: Measurement(pulse: 100, hrv: 100))
+            RateIndexV(measurement: Measurement(pulse: 100, hrv: 100))
+            RateIndexV(measurement: Measurement(pulse: 86, hrv: 5))
+            RateIndexV(measurement: Measurement(pulse: 50, hrv: 100))
+            RateIndexV(measurement: Measurement(pulse: 150, hrv: 100))
+        }
+    }
+    //        .frame(maxWidth: .infinity,maxHeight: .infinity)
+//        .background(.black)
 }

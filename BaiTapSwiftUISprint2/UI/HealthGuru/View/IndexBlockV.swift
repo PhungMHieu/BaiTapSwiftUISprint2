@@ -42,7 +42,7 @@ struct IndexBlockV: View {
                 }
             }
         }
-        .frame(maxWidth: .infinity)
+        .frame(width: 86, alignment: .leading)
     }
 }
 
