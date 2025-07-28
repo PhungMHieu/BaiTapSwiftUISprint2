@@ -24,10 +24,7 @@ struct HealthGridItemV2: View {
                 Image(imageCheckBox)
                     .padding(.top, 16)
                     .padding(.leading, 16)
-                //                ZStack(){
-                //                    Spacer()
                 Image(image)
-                //                }
                     .frame(maxWidth: .infinity)
                     .padding(.top, 8)
                 Spacer()

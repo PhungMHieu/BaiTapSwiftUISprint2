@@ -52,8 +52,8 @@ func setUpNavBar(){
 }
 func setUpTabBar(){
     let apperance = UITabBarAppearance()
-
-    apperance.backgroundColor = .neutral5
+    apperance.configureWithTransparentBackground()
+    apperance.backgroundImage = .imgBackgroundTabBar
     apperance.shadowColor = .clear
     let normalAttributes: [NSAttributedString.Key: Any] = [
         .foregroundColor: UIColor.neutral4,

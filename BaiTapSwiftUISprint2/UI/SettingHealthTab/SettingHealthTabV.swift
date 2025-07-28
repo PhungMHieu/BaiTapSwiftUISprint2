@@ -25,10 +25,6 @@ struct SettingHealthTabV: View {
                 }
                 .tag(2)
         }
-        .background(.neutral5)
-        .onAppear(){
-            UITabBar.appearance().backgroundColor = .neutral5
-        }
     }
 }
 

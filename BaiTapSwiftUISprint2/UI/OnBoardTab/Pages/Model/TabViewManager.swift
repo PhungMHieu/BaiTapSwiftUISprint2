@@ -40,15 +40,17 @@ class TabViewManager: ObservableObject {
         tabs[current]?[index].isSelected.toggle()
     }
     func goToNextPage(){
-        withAnimation(.easeInOut) {
+//        withAnimation(.easeInOut) {
             if let currentIndex = OnBoardPage.allCases.firstIndex(of: currentTab){
                 if (currentIndex + 1 < OnBoardPage.allCases.count){
-                    currentTab = OnBoardPage.allCases[currentIndex + 1]
+                    withAnimation(.easeInOut) {
+                        currentTab = OnBoardPage.allCases[currentIndex + 1]
+                    }
                 }else{
                     isCompleted = true
                 }
             }
-        }
+//        }
         
     }
 }

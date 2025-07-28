@@ -15,7 +15,6 @@ struct OnBoardTabView: View {
                 ForEach(OnBoardPage.allCases,id: \.hashValue) { page in
                     if(page.rawValue == 0){
                         Page1V()
-//                            .background(Color.red)
                             .tag(page)
                             .background(Color.background)
                             .gesture(DragGesture())

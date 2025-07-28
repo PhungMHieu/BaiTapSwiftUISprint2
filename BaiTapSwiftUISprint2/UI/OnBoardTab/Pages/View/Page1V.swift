@@ -31,7 +31,6 @@ struct Page1V: View {
             Spacer()
         }
         .background(Color.background)
-//        .background(Color.red)
     }
 }
 
