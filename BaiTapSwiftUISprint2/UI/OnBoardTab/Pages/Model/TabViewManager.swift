@@ -12,15 +12,14 @@ enum OnBoardingKey:String{
     case currentTabIndex
     case isCompleted
 }
+
+
 class TabViewManager: ObservableObject {
     
     @Published var tabs: [OnBoardPage:[HealGrid]]
     @Published var currentTab: OnBoardPage = .page1
     @Published var isCurrentPageSelected: Bool = true
-    @AppStorage(OnBoardingKey.currentTabIndex.rawValue)
-    var storeTabIndex:Int = 0
-    @AppStorage(OnBoardingKey.isCompleted.rawValue)
-    var isCompleted:Bool = false
+    
     private var cancellables = Set<AnyCancellable>()
     init() {
         self.tabs = [:]
@@ -46,9 +45,13 @@ class TabViewManager: ObservableObject {
                     withAnimation(.easeInOut) {
                         currentTab = OnBoardPage.allCases[currentIndex + 1]
                     }
-                }else{
-                    isCompleted = true
                 }
+//                else{
+//                    withAnimation(.easeInOut) {
+//                        isCompleted = true
+//                    }
+//                    
+//                }
             }
 //        }
         

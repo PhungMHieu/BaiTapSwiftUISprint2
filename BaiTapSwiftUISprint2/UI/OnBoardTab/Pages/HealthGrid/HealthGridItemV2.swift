@@ -43,6 +43,7 @@ struct HealthGridItemV2: View {
                 RoundedRectangle(cornerRadius: 20)
                     .stroke(isSelected ? Color.primary1:Color.clear, lineWidth: 1.5))
             .aspectRatio(CGSize(width:164, height:195), contentMode: .fit)
+            .padding(.top,2)
         })
     }
 }

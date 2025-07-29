@@ -18,10 +18,6 @@ struct BaiTapSwiftUISprint2App: App {
         WindowGroup {
             if(isCompleted){
                 RootV()
-                    .onAppear(){
-                        setUpNavBar()
-                        setUpTabBar()
-                    }
             }else{
                 OnBoardTabView()
             }

@@ -8,6 +8,10 @@
 import SwiftUI
 struct OnBoardTabView: View {
     @StateObject var onBoardManager =  TabViewManager()
+    
+    @AppStorage(OnBoardingKey.currentTabIndex.rawValue) var storeTabIndex:Int = 0
+    @AppStorage(OnBoardingKey.isCompleted.rawValue) var isCompleted:Bool = false
+    
     var body: some View {
         VStack(spacing:0) {
 
@@ -34,15 +38,18 @@ struct OnBoardTabView: View {
                 }
             }
             .onChange(of: onBoardManager.currentTab, perform: { newValue in
-                onBoardManager.storeTabIndex = newValue.rawValue
+                storeTabIndex = newValue.rawValue
             })
             .onAppear(){
                 UITabBar.appearance().backgroundColor = .neutral5
-                onBoardManager.currentTab = OnBoardPage(rawValue: onBoardManager.storeTabIndex) ?? .page1
+                onBoardManager.currentTab = OnBoardPage(rawValue: storeTabIndex) ?? .page1
             }
             .tabViewStyle(PageTabViewStyle(indexDisplayMode: .never))
             Button {
                 onBoardManager.goToNextPage()
+                if(storeTabIndex+1==OnBoardPage.allCases.count){
+                    isCompleted = true
+                }
             } label: {
                 Text("Continue")
                     .frame(maxWidth: .infinity,maxHeight: .infinity)
