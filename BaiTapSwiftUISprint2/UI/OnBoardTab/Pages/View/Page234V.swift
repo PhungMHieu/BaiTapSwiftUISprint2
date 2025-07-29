@@ -25,7 +25,7 @@ struct Page234V: View {
                 .padding(.horizontal,33)
                 .padding(.bottom,24)
             ScrollView {
-                LazyVGrid(columns: columns, spacing: 16) {
+                LazyVGrid(columns: columns, spacing: 15) {
                     ForEach($data) {$item in
                         HealthGridItemV2(title: item.title, image: item.icon, isSelected: $item.isSelected)
                     }
