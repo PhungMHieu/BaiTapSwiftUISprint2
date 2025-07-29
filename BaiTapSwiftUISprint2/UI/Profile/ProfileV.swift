@@ -10,7 +10,7 @@ struct ProfileV: View {
     @EnvironmentObject var navi: NavigationManager
     var body: some View {
         VStack(spacing:0) {
-            Image(systemName: "person.circle.fill")
+            Image(.ava)
                 .resizable()
                 .aspectRatio(contentMode: .fit)
                 .frame(width: 108)
@@ -32,6 +32,7 @@ struct ProfileV: View {
                     .fontWeight(.bold)
                     .foregroundColor(.good)
                 Divider()
+                    .background(Color.accentLine)
                     .padding(.horizontal,16)
                 HStack(spacing: 25.67) {
                     ForEach(MetricType.allCases, id: \.rawValue) { metricType in
