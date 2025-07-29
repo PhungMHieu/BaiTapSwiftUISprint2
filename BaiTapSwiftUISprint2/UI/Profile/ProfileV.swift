@@ -26,7 +26,7 @@ struct ProfileV: View {
                     .font(.system(size: 16))
                     .fontWeight(.medium)
                     .foregroundColor(.neutral1)
-                    .padding(.top,0)
+                    .padding(.top,16)
                 Text(String(navi.userProfile?.calculateBMI() ?? 25))
                     .font(.system(size: 64))
                     .fontWeight(.bold)
@@ -47,8 +47,8 @@ struct ProfileV: View {
                         }
                     }
                 }
+                .padding(.bottom,16)
             }
-            .frame(height: 194)
             .background(Color.neutral5)
             .cornerRadius(20)
             .padding(.horizontal,31.5)

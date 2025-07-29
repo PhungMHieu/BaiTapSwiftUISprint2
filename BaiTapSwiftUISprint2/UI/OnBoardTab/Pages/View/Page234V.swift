@@ -12,7 +12,7 @@ struct Page234V: View {
     var title:String
     var body: some View {
         let columns = [
-            GridItem(.flexible(), spacing: 16),
+            GridItem(.flexible()),
             GridItem(.flexible()),
         ]
         VStack(spacing: 0){
