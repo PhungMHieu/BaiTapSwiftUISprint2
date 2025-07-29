@@ -79,7 +79,6 @@ struct TrackDailyClickV: View {
                     .font(.system(size: 16, weight: .semibold))
                     .padding(.bottom,4)
                     .tracking(0.2)
-//                    .lineSpacing(24-16)
                 Spacer()
             }
             .frame(maxWidth: .infinity)

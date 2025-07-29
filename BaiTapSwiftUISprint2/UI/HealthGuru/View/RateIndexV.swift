@@ -34,8 +34,8 @@ struct RateIndexV: View {
 
 #Preview {
     ZStack{
-        Color.blue // ✅ Phủ nền xanh cho toàn bộ stack
-                .ignoresSafeArea() // nếu muốn phủ kín toàn màn hình
+        Color.blue
+            .ignoresSafeArea()
         VStack{
             RateIndexV(measurement: Measurement(pulse: 100, hrv: 100))
             RateIndexV(measurement: Measurement(pulse: 100, hrv: 100))
@@ -44,6 +44,4 @@ struct RateIndexV: View {
             RateIndexV(measurement: Measurement(pulse: 150, hrv: 100))
         }
     }
-    //        .frame(maxWidth: .infinity,maxHeight: .infinity)
-//        .background(.black)
 }
