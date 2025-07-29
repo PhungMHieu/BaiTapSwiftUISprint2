@@ -21,8 +21,7 @@ struct SettingV: View {
                 Section{
                     Image(.icLabelPremium)
                         .resizable()
-                        .frame(maxWidth: .infinity, maxHeight: 104)
-                        .scaledToFill()
+                        .scaledToFit()
                         .listRowInsets(EdgeInsets())
                 }
                 .listRowBackground(
