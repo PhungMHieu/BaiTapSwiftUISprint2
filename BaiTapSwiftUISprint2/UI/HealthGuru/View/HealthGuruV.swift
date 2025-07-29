@@ -68,17 +68,18 @@ struct HealthGuruV: View {
 
 struct TrackDailyClickV: View {
     var body: some View {
-        VStack(spacing:4) {
+        VStack(spacing:0) {
             HStack(spacing:0) {
                 Image(.icLike5)
                     .resizable()
                     .aspectRatio(contentMode: .fit)
-                    .frame(width:24,height:24)
+                    .frame(width:28,height:28)
                     .clipped()
                 Text("Track daily")
                     .font(.system(size: 16, weight: .semibold))
                     .padding(.bottom,4)
                     .tracking(0.2)
+                    .frame(height: 24)
                 Spacer()
             }
             .frame(maxWidth: .infinity)
@@ -87,6 +88,7 @@ struct TrackDailyClickV: View {
                     .font(.system(size: 14))
                     .tracking(0.4)
                     .foregroundColor(.neutral2)
+                    .frame(height: 20)
                 Spacer()
             }
         }

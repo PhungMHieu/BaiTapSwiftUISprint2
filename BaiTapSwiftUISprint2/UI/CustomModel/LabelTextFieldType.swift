@@ -21,9 +21,9 @@ enum LabelTextFieldType: String, CaseIterable {
         case .hrv:
             return "HRV"
         case .firstName:
-            return "First Name"
+            return "First name"
         case .lastName:
-            return "Last Name"
+            return "Last name"
         case .weight:
             return "Weight"
         case .height:

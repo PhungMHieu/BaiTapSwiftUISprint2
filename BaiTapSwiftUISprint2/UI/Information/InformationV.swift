@@ -20,8 +20,9 @@ struct InformationV: View {
                         .font(.system(size: 16))
                         .fontWeight(.medium)
                         .foregroundColor(.neutral15)
-                        .lineSpacing(24-UIFont.systemFont(ofSize: 16, weight: .medium).lineHeight)
+//                        .lineSpacing(24-UIFont.systemFont(ofSize: 16, weight: .medium).lineHeight)
                         .frame(maxWidth: .infinity,alignment: .leading)
+                        .frame(height: 24)
                     Picker(selection: $navi.gender, label: Text("Gender")) {
                         ForEach(Gender.allCases, id: \.hashValue) { gender in
                             Text(gender.description)

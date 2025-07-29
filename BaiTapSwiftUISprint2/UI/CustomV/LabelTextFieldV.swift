@@ -15,8 +15,8 @@ struct LabelTextFieldV: View {
             Text(type.title)
                 .font(.system(size: 16))
                 .fontWeight(.medium)
-                .lineSpacing(24-UIFont.systemFont(ofSize: 16, weight: .medium).lineHeight)
                 .foregroundColor(.neutral15)
+                .frame(height: 24)
             TextField(text: $text, label: {
                 Text("\(type.placeholder)")
                     .font(.system(size: 16))

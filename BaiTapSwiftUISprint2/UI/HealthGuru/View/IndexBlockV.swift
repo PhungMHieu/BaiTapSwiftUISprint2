@@ -17,6 +17,7 @@ struct IndexBlockV: View {
                 .fontWeight(.medium)
                 .tracking(0.2)
                 .foregroundColor(.neutral3)
+                .frame(height: 20)
             HStack(spacing: 4) {
                 if let value = self.value{
                     Text(healMetricLogModel.getValue(measurement: value))
@@ -44,6 +45,7 @@ struct IndexBlockV: View {
                         
                 }
             }
+            .frame(height: 32)
         }
         .frame(width: 86, alignment: .leading)
     }
