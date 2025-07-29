@@ -39,11 +39,12 @@ struct MetricV: View {
                     .fontWeight(.semibold)
                     .foregroundColor(.good)
             }
+            .frame(height: 24)
             Text(type.rawValue)
                 .font(.system(size: 14))
                 .fontWeight(.medium)
                 .foregroundColor(.neutral3)
-                .frame(height: 14)
+                .frame(height: 17)
         }
     }
 }
